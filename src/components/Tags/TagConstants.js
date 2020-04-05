@@ -1,0 +1,5 @@
+export const RECENTLY_PLAYED = "Recently Played"
+export const YOUR_TOP_TRACKS = "Your Top Tracks"
+export const CHARTS = "Charts"
+export const ALBUM_VIEW = ""
+export const ARTIST_VIEW = ""
