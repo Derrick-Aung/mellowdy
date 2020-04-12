@@ -1,6 +1,6 @@
-import {FETCH_RECENTLY_PLAYED,FETCH_USER_TOP_TRACKS, FETCH_CHARTS} from './types'
+import {FETCH_RECENTLY_PLAYED,FETCH_USER_TOP_TRACKS, FETCH_CHARTS, FETCH_USER_PLAYLISTS} from './types'
 import Axios from 'axios'
-import {baseUri} from '../config'
+import {baseUri, userPlaylistsUri} from '../config'
 
 export function fetchRecentlyPlayed(token){
     return function(dispatch){
@@ -14,7 +14,6 @@ export function fetchRecentlyPlayed(token){
                 let tracks = recentlyPlayedSongs.data.items.map(
                     (song) => {return song.track}
                 )
-                console.log("tracks",tracks)
                 dispatch({
                     type: FETCH_RECENTLY_PLAYED,
                     recentlyPlayedSongs: tracks
@@ -32,7 +31,6 @@ export function fetchUserTopTracks(token){
                 'Authorization': `Bearer ${token}`
             }
         }).then( userTopTracks => {
-                console.log('userTopTracks',userTopTracks.data.items)
                 dispatch({
                     type: FETCH_USER_TOP_TRACKS,
                     userTopTracks: userTopTracks.data.items
@@ -53,11 +51,9 @@ export function fetchCharts(token){
                 'Authorization': `Bearer ${token}`
             }
         }).then( charts => {
-                console.log('charts',charts.data.tracks.items)
                 let tracks = charts.data.tracks.items.map(
                     (song) => {return song.track}
                 )
-                console.log("tracks",tracks)
                 dispatch({
                     type: FETCH_CHARTS,
                     charts: tracks
@@ -75,10 +71,28 @@ export function fetchPlaylists(token){
                 'Authorization': `Bearer ${token}`
             }
         }).then( charts => {
-                console.log('charts',charts.data.playlists.items)
                 dispatch({
                     type: FETCH_CHARTS,
                     charts: charts.data.playlists.items
+                })
+            }
+        )
+    }
+} 
+
+export function getUserPlaylists(user_id, token){
+    // if (user_id == null){ return }
+    return function(dispatch){
+        const url = userPlaylistsUri(user_id)
+        Axios.get(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then( res => {
+                let user_playlists = res.data.items
+                dispatch({
+                    type: FETCH_USER_PLAYLISTS,
+                    user_playlists: user_playlists
                 })
             }
         )

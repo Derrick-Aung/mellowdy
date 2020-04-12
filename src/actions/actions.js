@@ -1,6 +1,21 @@
 import Axios from 'axios'
-import {GET_TOKEN} from './types'
+import {baseUri} from '../config'
+import {SET_USER_ID} from './types'
 
-export const getToken = () => dispatch => {
-    
-}
+export function getUserProfileId(token){
+    return function(dispatch){
+        const url = `${baseUri}me`
+        Axios.get(url, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then( res => {
+                let id = res.data.id
+                dispatch({
+                    type: SET_USER_ID,
+                    user_id: id
+                })
+            }
+        )
+    }
+} 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {fetchRecentlyPlayed, fetchUserTopTracks, fetchCharts} from '../../actions/melodyActions'
 import {connect} from 'react-redux'
-import { RECENTLY_PLAYED,YOUR_TOP_TRACKS, CHARTS } from '../Tags/TagConstants'
+import { RECENTLY_PLAYED,YOUR_TOP_TRACKS, CHARTS } from '../TagBar/TagConstants'
 
 export class PrimaryContainer extends Component {
 
@@ -9,18 +9,12 @@ export class PrimaryContainer extends Component {
         super(props)
         this.state = {
             dataReady: false,
-            currentDisplaying: null 
+            currentDisplay:null
         }
     }
 
-    componentDidUpdate(){
-        
-    }
-
-    render() {
-
+    componentDidMount(){
         let currentDisplay = null
-
         if(this.props.isFetching){
             switch(this.props.currentTab){
                 case RECENTLY_PLAYED:
@@ -52,15 +46,58 @@ export class PrimaryContainer extends Component {
             }
         }
         
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        let currentDisplay = null
+        if(this.props.isFetching){
+            switch(this.props.currentTab){
+                case RECENTLY_PLAYED:
+                    this.props.fetchRecentlyPlayed(this.props.token)
+                    break
+                case YOUR_TOP_TRACKS:
+                    this.props.fetchUserTopTracks(this.props.token)
+                    break
+                case CHARTS:
+                    this.props.fetchCharts(this.props.token)
+                    break
+                default:
+                    return null
+            }
+            this.props.setIsFetching(false)
+        }else{
+            switch(this.props.currentTab){
+                case RECENTLY_PLAYED:
+                    currentDisplay = this.props.recentlyPlayed
+                    break
+                case YOUR_TOP_TRACKS:
+                    currentDisplay = this.props.userTopTracks
+                    break
+                case CHARTS:
+                    currentDisplay = this.props.charts
+                    break
+                default:
+                    return null
+            }
+            if(prevState.currentDisplay !== currentDisplay){
+                this.setState({
+                    currentDisplay: currentDisplay
+                })
+            }
+        }
         
+        
+    }
+
+    render() {
         return (
-            <div>
+            <div className="primary-container my-4">
                 
-                <div className="primary-container my-4">
+                <div >
                     <h2>{this.props.currentTab}</h2>
-                    {!this.props.isFetching && currentDisplay &&
+                    {!this.props.isFetching && this.state.currentDisplay &&
                     <div className="grid-container my-4">
-                        {currentDisplay.filter(song => (song.preview_url))
+                        {this.state.currentDisplay.filter(song => (song.preview_url))
                         .map((song, index) => (
                             <div className="song-container">
                                 <img onClick={() => this.props.fetchAudioAndDetails(song,song.artists[0].id)} src={song.album.images[0].url} alt=""/>

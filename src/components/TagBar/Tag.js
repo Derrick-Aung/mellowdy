@@ -4,11 +4,9 @@ export class Tag extends Component {
 
     constructor(props){
         super(props)
-
     }
 
     handleClick = () => {
-        console.log("clicked tag")
         this.props.setIsFetching(true)
         this.props.changeTab(this.props.name)
     }
