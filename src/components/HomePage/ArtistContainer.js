@@ -32,6 +32,26 @@ export class ArtistContainer extends Component {
                                 ))}
                             </div>
                         </div>
+                        <div className="top-tracks">
+                            <span>Albums</span>
+                            <div className="song-container">
+                                {this.props.currentArtistAlbums && this.props.currentArtistAlbums
+                                .filter(album => album.album_group === "album")
+                                .map((album, index) => (
+                                <img onClick={() => this.props.playAlbum(album.id)} src={album.images[0].url} alt=""/>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="top-tracks">
+                            <span>Single</span>
+                            <div className="song-container">
+                                {this.props.currentArtistAlbums && this.props.currentArtistAlbums
+                                .filter(album => album.album_group === "single")
+                                .map((album, index) => (
+                                <img onClick={() => this.props.playAlbum(album.id)} src={album.images[0].url} alt=""/>
+                                ))}
+                            </div>
+                        </div>
                     </div>}
                 </div>
             )

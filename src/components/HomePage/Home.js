@@ -6,13 +6,16 @@ import {artistTopTracksUri,
     saveTrackToLibUri,
     saveTrackToPlaylistUri,
     checkUserLibUri,
-    artistUri} from '../../config'
+    artistAblumsUri,
+    artistUri,
+    albumUri} from '../../config'
 import TagBar from '../TagBar/TagBar'
 import PrimaryContainer from './PrimaryContainer'
 import {RECENTLY_PLAYED, YOUR_TOP_TRACKS, CHARTS} from '../TagBar/TagConstants'
 import ArtistContainer from './ArtistContainer'
 import SongContainer from './SongContainer'
 import {authEndPoint,clientID,redirectUri,scopes} from '../../config'
+import AlbumContainer from './AlbumContainer'
 
 export class Home extends Component {
 
@@ -24,17 +27,21 @@ export class Home extends Component {
             isFetching: true,
             songPlaying: false,
             currentSong: null,
+            currentSongImg: null,
             audio: null,
             currentArtistTracks: null,
             currentTab: RECENTLY_PLAYED,
             trackInLibrary: false,
-            currentArtist: null
+            currentArtist: null,
+            currentArtistAlbums: null,
+            currentAlbum: null
         }
         this.fetchAudioAndDetails = this.fetchAudioAndDetails.bind(this);
         this.changeTab = this.changeTab.bind(this)
         this.setIsFetching = this.setIsFetching.bind(this)
         this.addTrackToLib = this.addTrackToLib.bind(this)
         this.addTrackToPlaylist = this.addTrackToPlaylist.bind(this)
+        this.playAlbum = this.playAlbum.bind(this)
     }
 
     componentDidMount(){
@@ -42,10 +49,20 @@ export class Home extends Component {
     }
 
     fetchAudioAndDetails(song, artist_id){
-        this.playAudio(song)
+        this.playAudio(song, null, null)
         this.getArtistDetails(artist_id)
         this.getArtistTopTracks(artist_id)
+        this.getArtistAlbums(artist_id)
     }
+
+    fetchAudioAndDetails(song, artist_id, image_url, currentAlbum){
+        
+        this.playAudio(song, image_url, currentAlbum)
+        this.getArtistDetails(artist_id)
+        this.getArtistTopTracks(artist_id)
+        this.getArtistAlbums(artist_id)
+    }
+
 
     checkTrackInLib(track_id){
         Axios.get(checkUserLibUri(track_id), {
@@ -63,7 +80,22 @@ export class Home extends Component {
         )
     }
 
-    playAudio(song){
+    playAudio(song, song_img_url, currentAlbum){
+
+        let song_img = null
+        if(song_img_url){
+            song_img = song_img_url
+        }else{
+            song_img = song.album.images[0].url
+        }
+
+        let curAlbum = null
+        if(currentAlbum){
+            curAlbum = currentAlbum
+        }else{
+            curAlbum = song.album
+        }
+
         const previewUrl = song.preview_url
         let audio = new Audio(previewUrl)
         
@@ -74,6 +106,8 @@ export class Home extends Component {
                 {
                     songPlaying: true,
                     currentSong: song,
+                    currentSongImg: song_img,
+                    currentAlbum: curAlbum,
                     audio,
                 }
             )
@@ -92,6 +126,8 @@ export class Home extends Component {
                     {
                         songPlaying:true,
                         currentSong: song,
+                        currentSongImg: song_img,
+                        currentAlbum: curAlbum,
                         audio,
                     }
                 )
@@ -123,6 +159,18 @@ export class Home extends Component {
                 this.setState(
                     {currentArtistTracks: res.data}
                 )
+            }
+        )
+    }
+
+    getArtistAlbums(artist_id){
+        Axios.get(artistAblumsUri(artist_id), {
+            headers: {
+                'Authorization': `Bearer ${this.props.token}`
+            }
+        }).then(
+            res => {
+                this.setState({currentArtistAlbums:res.data.items})
             }
         )
     }
@@ -187,6 +235,20 @@ export class Home extends Component {
         )
     }
 
+    playAlbum(album_id){
+        Axios({
+            method: 'get',
+            url: albumUri(album_id),
+            headers: {
+                'Authorization': `Bearer ${this.props.token}`,
+            }
+        }).then(
+            res=>{
+            let curAlbum = res.data
+            this.fetchAudioAndDetails(curAlbum.tracks.items[0], curAlbum.artists[0], curAlbum.images[0].url, curAlbum)
+        })
+    }
+
     render() {
         if(!this.props || !this.props.token){
             return (
@@ -212,15 +274,23 @@ export class Home extends Component {
                         fetchAudioAndDetails={this.fetchAudioAndDetails}/>
                         <SongContainer 
                         currentSong={this.state.currentSong} 
+                        currentAlbum={this.state.currentAlbum} 
                         addTrackToLib={this.addTrackToLib} 
                         addTrackToPlaylist={this.addTrackToPlaylist}
-                        trackInLibrary={this.state.trackInLibrary}/>
+                        trackInLibrary={this.state.trackInLibrary}
+                        currentSongImg={this.state.currentSongImg}/>
                     </div>
                     <ArtistContainer 
                     currentSong={this.state.currentSong} 
                     currentArtistTracks={this.state.currentArtistTracks}
                     fetchAudioAndDetails={this.fetchAudioAndDetails}
                     currentArtist={this.state.currentArtist}
+                    currentArtistAlbums={this.state.currentArtistAlbums}
+                    playAlbum={this.playAlbum}
+                    />
+                    <AlbumContainer 
+                    currentAlbum={this.state.currentAlbum}
+                    fetchAudioAndDetails={this.fetchAudioAndDetails}
                     />
                 </div>
             )
