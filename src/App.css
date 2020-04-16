@@ -13,6 +13,7 @@ body{
 }
 
 .navbar {
+  font-family: 'Lora', serif;
   background-color: #1a202c;
   border-bottom: 1px solid #4d5d72;
 }
@@ -34,11 +35,11 @@ body{
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;
-  width: 50%;
+  font-family: 'Lora', serif;
 }
 
 .primary-container img{
-  width: 100px;
+  width: 80px;
 }
 
 .top-tracks img{
@@ -47,6 +48,7 @@ body{
 
 .details-container{
   margin-top: 6rem;
+  font-family: 'Lora', serif;
 }
 
 .details-container img{
@@ -56,6 +58,7 @@ body{
 }
 
 .details-container span{
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -72,7 +75,8 @@ body{
   display: block;
 }
 
-.artist-container{
+.artist-container, .album-container{
+  font-family: 'Roboto', sans-serif;
   width:60%;
   margin-left: auto;
   margin-right: auto;
@@ -88,6 +92,7 @@ body{
 }
 
 .tag{
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   background: #55677e;
   color: #f7f7f7;
@@ -95,7 +100,6 @@ body{
   padding: 5px 15px;
   margin: 4px 6px;
   display: inline-block;
-  letter-spacing: 0.2px;
   border: 1px solid #adc1dd;
   cursor: pointer;
 }
@@ -152,15 +156,18 @@ body{
 }
 
 .muted-text{
-  font-size: 1rem;
   color: #686868;
+}
+
+.muted-text-light{
+  color: #888888;
 }
 
 .song-title-text{
   font-size: 1.5rem;
 }
 
-.artist-container{
+.artist-container, .album-container{
   padding: 3rem;
   background-color: #29313d;
   margin-bottom: 3rem;
@@ -168,20 +175,24 @@ body{
   border: 1px solid #adc1dd;
 }
 
-.artist-details{
+.artist-details, .album-details{
   display: flex;
   padding-bottom: 2rem;
 }
 
-.artist-info{
+.artist-info, .album-info{
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
 }
 
 .artist-img img{
-  width: 100px;
+  width: 80px;
   border-radius: 50%;
+}
+
+.album-img img{
+  width: 80px;
 }
 
 .login-container{
@@ -204,21 +215,38 @@ body{
 .artist-container .song-container img{
   margin-right: 2px;
   margin-bottom: 2px;
+  width: 60px;
 }
 
-.song-list-container img{
+.track-list-container{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.track-list-container img{
   display: flex;
   flex-direction: column;
   width: 40px;
   margin-bottom: 2px;
 }
 
-.album-song{
+.album-track{
   display: flex;
 }
 
-.album-song span{
+.album-track span{
   min-height: 40px;
   display: inline-flex;
   align-items: center;
+}
+
+.genre{
+  background: #55677e;
+  color: #f7f7f7;
+  border-radius: 1.5rem;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 0.5rem;
+  border: 1px solid #adc1dd;
+  cursor: pointer;
 }

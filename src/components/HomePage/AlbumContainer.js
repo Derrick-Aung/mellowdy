@@ -7,7 +7,6 @@ export class AlbumContainer extends Component {
     
     constructor(props){
         super(props)
-
         this.state = {
             album: null
         }
@@ -18,8 +17,8 @@ export class AlbumContainer extends Component {
     
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.currentAlbum !== this.props.currentAlbum){
-            let album_id = this.props.currentAlbum.id
+        if (prevProps.currentAlbumId !== this.props.currentAlbumId){
+            let album_id = this.props.currentAlbumId
             Axios({
                 method: 'get',
                 url: albumUri(album_id),
@@ -39,26 +38,26 @@ export class AlbumContainer extends Component {
         if(this.state.album)
         {
             return (
-                <div className="artist-container">
+                <div className="album-container">
                     <div>
-                        <div className="artist-details">
-                            <div className="artist-img">
+                        <div className="album-details">
+                            <div className="album-img">
                                 <img src={this.state.album.images[1].url} alt=""/>
                             </div>
-                            <div className="artist-info">
+                            <div className="album-info">
                                 <span>{this.state.album.name}</span>
-                                <span>By {this.state.album.artists[0].name}</span>
-                                <span>Released {this.state.album.release_date}</span>
+                                <span className="muted-text-light">By {this.state.album.artists[0].name}</span>
+                                <span className="muted-text-light">Released {this.state.album.release_date}</span>
                             </div>
                         </div>
                         <div className="album-tracks">
                             <span>Tracks</span>
-                            <div className="song-list-container">
-                                {this.state.album.tracks.items.filter(song => (song.preview_url))
-                                .map((song, index) => (
-                                <div className="album-song">
-                                    <img onClick={() => this.props.fetchAudioAndDetails(song,song.artists[0].id)} src={this.state.album.images[1].url} alt=""/>
-                                    <span className="ml-3">{song.name}</span>
+                            <div className="track-list-container">
+                                {this.state.album.tracks.items.filter(track => (track.preview_url))
+                                .map((track, index) => (
+                                <div className="album-track mt-1" key={index}>
+                                    <img onClick={() => this.props.fetchAudioAndDetails(track.id,track.preview_url)} src={this.state.album.images[1].url} alt=""/>
+                                    <span className="ml-3">{track.name}</span>
                                 </div>
                                 ))}
                             </div>

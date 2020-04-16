@@ -1,4 +1,8 @@
-import {FETCH_RECENTLY_PLAYED, FETCH_USER_TOP_TRACKS, FETCH_CHARTS, FETCH_USER_PLAYLISTS} from '../actions/types'
+import {FETCH_RECENTLY_PLAYED,
+    FETCH_USER_TOP_TRACKS,
+    FETCH_CHARTS,
+    FETCH_USER_PLAYLISTS,
+    FETCH_GENRE_TRACKS} from '../actions/types'
 
 const initialState = {
     recently_played_songs : [],
@@ -30,6 +34,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 user_playlists: action.user_playlists
+            }
+        case FETCH_GENRE_TRACKS:
+            return {
+                ...state,
+                genre_tracks: action.genre_tracks
             }
         default:
             return state;    

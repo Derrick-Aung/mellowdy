@@ -1,6 +1,10 @@
-import {FETCH_RECENTLY_PLAYED,FETCH_USER_TOP_TRACKS, FETCH_CHARTS, FETCH_USER_PLAYLISTS} from './types'
+import {FETCH_RECENTLY_PLAYED,
+    FETCH_USER_TOP_TRACKS,
+    FETCH_CHARTS,
+    FETCH_USER_PLAYLISTS,
+    FETCH_GENRE_TRACKS} from './types'
 import Axios from 'axios'
-import {baseUri, userPlaylistsUri} from '../config'
+import {baseUri, userPlaylistsUri, genreTracksUri} from '../config'
 
 export function fetchRecentlyPlayed(token){
     return function(dispatch){
@@ -81,7 +85,6 @@ export function fetchPlaylists(token){
 } 
 
 export function getUserPlaylists(user_id, token){
-    // if (user_id == null){ return }
     return function(dispatch){
         const url = userPlaylistsUri(user_id)
         Axios.get(url, {
@@ -93,6 +96,22 @@ export function getUserPlaylists(user_id, token){
                 dispatch({
                     type: FETCH_USER_PLAYLISTS,
                     user_playlists: user_playlists
+                })
+            }
+        )
+    }
+} 
+
+export function fetchGenre(token, genre){
+    return function(dispatch){
+        const url = genreTracksUri(genre)
+        Axios.get(url, {
+            headers: {'Authorization': `Bearer ${token}`}
+        }).then( res => {
+                let genre_tracks = res.data.tracks.items
+                dispatch({
+                    type: FETCH_GENRE_TRACKS,
+                    genre_tracks: genre_tracks
                 })
             }
         )

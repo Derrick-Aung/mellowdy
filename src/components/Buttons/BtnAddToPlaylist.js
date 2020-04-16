@@ -43,7 +43,7 @@ export class BtnAddToPlaylist extends Component {
                         {
                         this.props.user_playlists.map(
                             playlist => (
-                                <button onClick={() => this.props.addTrackToPlaylist(playlist.id)}>{`+ ${playlist.name}`}</button>
+                                <button key={playlist.id} onClick={() => this.props.addTrackToPlaylist(playlist.id)}>{`+ ${playlist.name}`}</button>
                             )
                         )
                         }

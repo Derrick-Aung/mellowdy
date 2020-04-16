@@ -31,7 +31,7 @@ const Header = (props) => {
   return (
     <div>
       <Navbar dark>
-        <NavbarBrand href="/" className="mr-auto">Mellowdies | Discover yourself</NavbarBrand>
+        <NavbarBrand href="/" className="mr-auto">Mellowdy | Discover yourself</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
