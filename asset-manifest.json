@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mellowdy/static/css/main.b8d59d59.chunk.css",
-    "main.js": "/mellowdy/static/js/main.a5ae6104.chunk.js",
-    "main.js.map": "/mellowdy/static/js/main.a5ae6104.chunk.js.map",
+    "main.js": "/mellowdy/static/js/main.bad715e5.chunk.js",
+    "main.js.map": "/mellowdy/static/js/main.bad715e5.chunk.js.map",
     "runtime-main.js": "/mellowdy/static/js/runtime-main.87a71600.js",
     "runtime-main.js.map": "/mellowdy/static/js/runtime-main.87a71600.js.map",
     "static/css/2.de424728.chunk.css": "/mellowdy/static/css/2.de424728.chunk.css",
     "static/js/2.3bdf0325.chunk.js": "/mellowdy/static/js/2.3bdf0325.chunk.js",
     "static/js/2.3bdf0325.chunk.js.map": "/mellowdy/static/js/2.3bdf0325.chunk.js.map",
     "index.html": "/mellowdy/index.html",
-    "precache-manifest.b643a873798e61c6024e9d67dcf47f8e.js": "/mellowdy/precache-manifest.b643a873798e61c6024e9d67dcf47f8e.js",
+    "precache-manifest.c8228e18890b85b2ab7f133fdf543085.js": "/mellowdy/precache-manifest.c8228e18890b85b2ab7f133fdf543085.js",
     "service-worker.js": "/mellowdy/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/mellowdy/static/css/2.de424728.chunk.css.map",
     "static/css/main.b8d59d59.chunk.css.map": "/mellowdy/static/css/main.b8d59d59.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.de424728.chunk.css",
     "static/js/2.3bdf0325.chunk.js",
     "static/css/main.b8d59d59.chunk.css",
-    "static/js/main.a5ae6104.chunk.js"
+    "static/js/main.bad715e5.chunk.js"
   ]
 }
