@@ -6,9 +6,9 @@ SOUND ON
 Demo  
 https://derrick-aung.github.io/mellowdy/
 
-![Mellowdy](./mellowdy.png)
+![Mellowdy](mellowdy.png)
 
-![MellowdyTrackView](./mellowdy2.png)
+![MellowdyTrackView](mellowdy2.png)
 
 Notable Features:
 - API implementation with token authentication
