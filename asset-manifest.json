@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/mellowdy/static/css/main.228719d2.chunk.css",
-    "main.js": "/mellowdy/static/js/main.6c67cd26.chunk.js",
-    "main.js.map": "/mellowdy/static/js/main.6c67cd26.chunk.js.map",
+    "main.css": "/mellowdy/static/css/main.84d2ede7.chunk.css",
+    "main.js": "/mellowdy/static/js/main.e1810071.chunk.js",
+    "main.js.map": "/mellowdy/static/js/main.e1810071.chunk.js.map",
     "runtime-main.js": "/mellowdy/static/js/runtime-main.87a71600.js",
     "runtime-main.js.map": "/mellowdy/static/js/runtime-main.87a71600.js.map",
     "static/css/2.de424728.chunk.css": "/mellowdy/static/css/2.de424728.chunk.css",
     "static/js/2.178b5e45.chunk.js": "/mellowdy/static/js/2.178b5e45.chunk.js",
     "static/js/2.178b5e45.chunk.js.map": "/mellowdy/static/js/2.178b5e45.chunk.js.map",
     "index.html": "/mellowdy/index.html",
-    "precache-manifest.eb9e74a6c21ce56857b1c7cfe6221b22.js": "/mellowdy/precache-manifest.eb9e74a6c21ce56857b1c7cfe6221b22.js",
+    "precache-manifest.81a559aa58aa0eb56729ca7fd11cf149.js": "/mellowdy/precache-manifest.81a559aa58aa0eb56729ca7fd11cf149.js",
     "service-worker.js": "/mellowdy/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/mellowdy/static/css/2.de424728.chunk.css.map",
-    "static/css/main.228719d2.chunk.css.map": "/mellowdy/static/css/main.228719d2.chunk.css.map",
+    "static/css/main.84d2ede7.chunk.css.map": "/mellowdy/static/css/main.84d2ede7.chunk.css.map",
     "static/js/2.178b5e45.chunk.js.LICENSE.txt": "/mellowdy/static/js/2.178b5e45.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.87a71600.js",
     "static/css/2.de424728.chunk.css",
     "static/js/2.178b5e45.chunk.js",
-    "static/css/main.228719d2.chunk.css",
-    "static/js/main.6c67cd26.chunk.js"
+    "static/css/main.84d2ede7.chunk.css",
+    "static/js/main.e1810071.chunk.js"
   ]
 }
