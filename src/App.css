@@ -265,6 +265,12 @@ body{
   margin-right: 1rem;
 }
 
+.alert{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .alert span{
   color: #155724;
 }

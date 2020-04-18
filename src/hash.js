@@ -13,6 +13,6 @@ const hash = window.location.hash
 
 export default hash;
 
-// http://localhost:3000/#access_token=BQAL2XHD396hmogp-AsCO4y_vUxO5o6Cbo
+// http://localhost:3000/#access_token=BQAL2XHD3sdmogp-AsCO4y_vUxO5o6Cbo
 // &token_type=Bearer
 //  &expires_in=3600

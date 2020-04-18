@@ -18,12 +18,12 @@ export const genreTracksUri = (genre) => {
 }
 
 // dev config
-// export const clientID = "408248c6530e45e7a4975fbfa6ce0948"
-// export const redirectUri = "http://localhost:3000"
+export const clientID = "408248c6530e45e7a4975fbfa6ce0948"
+export const redirectUri = "http://localhost:3000"
 
 // prod config
-export const clientID = "e4cea7caa08242babef9202eda8e472f"
-export const redirectUri = "https://derrick-aung.github.io/mellowdy"
+// export const clientID = "e4cea7caa08242babef9202eda8e472f"
+// export const redirectUri = "https://derrick-aung.github.io/mellowdy"
 
 // browse by genre
 //"https://api.spotify.com/v1/search?query=genre%3A%22burmese+pop%22&type=track&offset=0&limit=20"
