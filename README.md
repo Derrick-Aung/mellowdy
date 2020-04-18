@@ -3,12 +3,12 @@ A front end only web application for you to discover music quickly by listening 
 
 SOUND ON
 
-Demo  
+Visit Mellowdy
 https://derrick-aung.github.io/mellowdy/
 
-![Mellowdy](mellowdy.png)
+![](mellowdy.png)
 
-![MellowdyTrackView](mellowdy2.png)
+![](mellowdy2.png)
 
 Notable Features:
 - API implementation with token authentication
