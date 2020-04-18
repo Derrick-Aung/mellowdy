@@ -31,7 +31,9 @@ const Header = (props) => {
   return (
     <div>
       <Navbar dark>
-        <NavbarBrand href="/" className="mr-auto">Mellowdy | Discover yourself</NavbarBrand>
+        <NavbarBrand href="/" className="mr-auto">
+        <img className="mellowdy-logo" src={process.env.PUBLIC_URL +'/redfox.png'} alt=""/>
+        Mellowdy | Discover yourself</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
@@ -46,7 +48,7 @@ const Header = (props) => {
                 )}
             </NavItem>
             <NavItem>
-              <NavLink>GitHub</NavLink>
+              <NavLink href="https://github.com/Derrick-Aung/mellowdy">GitHub</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

@@ -27,7 +27,6 @@ export class PrimaryContainer extends Component {
                     this.props.fetchCharts(this.props.token)
                     break
                 default:
-                    console.log("default")
                     this.props.fetchGenre(this.props.token, this.props.currentTab)
                     break
             }
@@ -44,7 +43,6 @@ export class PrimaryContainer extends Component {
                     currentDisplay = this.props.charts
                     break
                 default:
-                    console.log("default")
                     currentDisplay = this.props.genreTracks
                     break
             }
@@ -66,7 +64,6 @@ export class PrimaryContainer extends Component {
                     this.props.fetchCharts(this.props.token)
                     break
                 default:
-                    console.log("default")
                     this.props.fetchGenre(this.props.token, this.props.currentTab)
                     break
             }
@@ -83,7 +80,6 @@ export class PrimaryContainer extends Component {
                     currentDisplay = this.props.charts
                     break
                 default:
-                    console.log("default")
                     currentDisplay = this.props.genreTracks
                     break
             }
@@ -99,7 +95,7 @@ export class PrimaryContainer extends Component {
 
     render() {
         return (
-            <div className="primary-container my-4">
+            <div className="primary-container mb-4">
                 
                 <div >
                     <h2>{this.props.currentTab}</h2>

@@ -15,6 +15,7 @@ import ArtistContainer from './ArtistContainer'
 import SongContainer from './SongContainer'
 import {authEndPoint,clientID,redirectUri,scopes} from '../../config'
 import AlbumContainer from './AlbumContainer'
+import AlertContainer from '../Alerts/AlertContainer'
 
 export class Home extends Component {
 
@@ -177,16 +178,21 @@ export class Home extends Component {
                     <span>The new way to discover music feat. The Spotify API</span>
                     <br/>
                     <span className="muted-text">A web project by Aung Phone Khant (Derrick)</span>
+                    <br/>
+                    <br/>
+                    <span className="muted-text">Note: This is for only for big screens as it is an ongoing project</span>
                     <div><span className="tag mt-3">
                         <a href={`${authEndPoint}?client_id=${clientID}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true&scope=${scopes.join("%20")}`}>
                             Login To Spotify First
                         </a></span></div>
+                    
                 </div>
             )
         }else{
             return (
                 <div>
                     <TagBar changeTab={this.changeTab} setIsFetching={this.setIsFetching}/>
+                    <AlertContainer />
                     <div className="main-container">
                         <PrimaryContainer 
                         isFetching={this.state.isFetching} 
