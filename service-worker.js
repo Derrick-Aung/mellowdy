@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mellowdy/precache-manifest.c8228e18890b85b2ab7f133fdf543085.js"
+  "/mellowdy/precache-manifest.eb9e74a6c21ce56857b1c7cfe6221b22.js"
 );
 
 self.addEventListener('message', (event) => {
