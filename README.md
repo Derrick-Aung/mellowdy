@@ -14,7 +14,6 @@ Notable Features:
 - API implementation with token authentication
 - Add song to playlist/library 
 - Clean UI Design  
-- Responsive design
 
 Upcoming Features:
 - [ ] Search function
