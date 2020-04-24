@@ -22,3 +22,4 @@ To Fix:
 - [X] Add alert to enhance user experience
 - [X] Fix lag between user interaction and music played
 - [ ] Add some prompt to user when album is empty    
+- [ ] Prompt when song has been added to playlist  
