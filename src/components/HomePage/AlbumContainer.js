@@ -56,7 +56,9 @@ export class AlbumContainer extends Component {
                                 {this.state.album.tracks.items.filter(track => (track.preview_url))
                                 .map((track, index) => (
                                 <div className="album-track mt-1" key={index}>
-                                    <img onClick={() => this.props.fetchAudioAndDetails(track.id,track.preview_url)} src={this.state.album.images[1].url} alt=""/>
+                                    <img onClick={() => this.props.handleTrackClick(track.id,track.preview_url, 
+                                    this.state.album.artists[0].id,
+                                    this.state.album.id)} src={this.state.album.images[1].url} alt=""/>
                                     <span className="ml-3">{track.name}</span>
                                 </div>
                                 ))}

@@ -104,7 +104,7 @@ export class PrimaryContainer extends Component {
                         {this.state.currentDisplay.filter(song => (song.preview_url))
                         .map((song, index) => (
                             <div className="song-container" key={index}>
-                                <img onClick={() => this.props.fetchAudioAndDetails(song.id,song.preview_url)} src={song.album.images[0].url} alt=""/>
+                                <img onClick={() => this.props.handleTrackClick(song.id,song.preview_url, song.artists[0].id, song.album.id)} src={song.album.images[0].url} alt=""/>
                             </div>
                         ))}
                     </div>}

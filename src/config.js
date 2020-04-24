@@ -10,12 +10,18 @@ export const artistTopTracksUri = (id) => {return `https://api.spotify.com/v1/ar
 export const artistAblumsUri = (artist_id) => {return `https://api.spotify.com/v1/artists/${artist_id}/albums?include_groups=album,single&limit=20`}
 export const artistUri = (artist_id) => {return `https://api.spotify.com/v1/artists/${artist_id}`}
 export const albumUri = (album_id) => {return `https://api.spotify.com/v1/albums/${album_id}`}
-export const trackUri = (track_id) => {return `https://api.spotify.com/v1/tracks/${track_id}`}
 export const convertTrackIdToUri = (track_id) => {return `spotify:track:${track_id}`}
 export const genreTracksUri = (genre) => {
     const genre_string = escape(`genre:"${genre}"`)
     return `https://api.spotify.com/v1/search?query=${genre_string}&type=track&limit=50`
 }
+export const trackUri = (track_id) => {return `https://api.spotify.com/v1/tracks/${track_id}`}
+
+export const multiTracksUri = (track_list) => {
+    const tracks_string = escape(track_list.map(track => track).join(','))
+    return `https://api.spotify.com/v1/tracks/${tracks_string}`
+}
+
 
 // dev config
 export const clientID = "408248c6530e45e7a4975fbfa6ce0948"

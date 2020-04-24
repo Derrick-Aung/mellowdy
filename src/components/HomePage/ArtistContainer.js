@@ -49,7 +49,7 @@ export class ArtistContainer extends Component {
         }).then(
             res=>{
             let curAlbum = res.data
-            this.props.fetchAudioAndDetails(curAlbum.tracks.items[0].id , curAlbum.tracks.items[0].preview_url)
+            this.props.handleTrackClick(curAlbum.tracks.items[0].id , curAlbum.tracks.items[0].preview_url, curAlbum.artists[0].id, curAlbum.id)
         })
     }
 
@@ -85,7 +85,7 @@ export class ArtistContainer extends Component {
                             <div className="song-container">
                                 {this.state.artist_top_tracks.tracks.filter(track => (track.preview_url))
                                 .map((track, index) => (
-                                <img key={`track-${index}`} onClick={() => this.props.fetchAudioAndDetails(track.id, track.preview_url)} src={track.album.images[0].url} alt=""/>
+                                <img key={`track-${index}`} onClick={() => this.props.handleTrackClick(track.id, track.preview_url, track.artists[0].id, track.album.id)} src={track.album.images[0].url} alt=""/>
                                 ))}
                             </div>
                         </div>

@@ -27,15 +27,14 @@ export class Home extends Component {
             isFetching: true,
             songPlaying: false,
             audio: null,
-            currentTab: RECENTLY_PLAYED,
+            currentTab: CHARTS,
             trackInLibrary: false,
             currentArtistId: null,
             currentAlbumId: null,
             currentTrackId: null,
-            currentTrack: null,
             currentGenre: null,
         }
-        this.fetchAudioAndDetails = this.fetchAudioAndDetails.bind(this);
+        this.handleTrackClick = this.handleTrackClick.bind(this);
         this.changeTab = this.changeTab.bind(this)
         this.setIsFetching = this.setIsFetching.bind(this)
         this.addTrackToLib = this.addTrackToLib.bind(this)
@@ -48,9 +47,11 @@ export class Home extends Component {
     }
 
     // this should be name handleTrackClick or smth
-    fetchAudioAndDetails(track_id, track_preview_url){
-        this.playAudio(track_id, track_preview_url)
-    }
+    // handleTrackClick(track_id, track_preview_url, artist_id, album_id){
+    //     this.playAudio(track_id, track_preview_url, artist_id, album_id)
+    // }
+
+    fetchAudioAndDetails(){}
 
     checkTrackInLib(track_id){
         Axios.get(checkUserLibUri(track_id), {
@@ -68,52 +69,38 @@ export class Home extends Component {
         )
     }
 
-    processTrack(){
-        
-    }
-
-    playAudio(track_id, track_preview_url){
+    handleTrackClick(track_id, track_preview_url, artist_id, album_id){
 
         let audio = new Audio(track_preview_url)
-
-        Axios.get(trackUri(track_id), {
-            headers: {'Authorization': `Bearer ${this.props.token}`}
-        }).then(
-            res => {
-            let curTrack = res.data
-            let curAlbumId = curTrack.album.id
-            let curArtistId = curTrack.artists[0].id
-            if (!this.state.songPlaying){
-            audio.play();
-            this.setState({
-                    songPlaying: true,
-                    currentTrack: res.data,
-                    currentAlbumId: curAlbumId,
-                    currentArtistId: curArtistId,
-                    currentTrackId: track_id,
-                    audio,
-                })
+        if (!this.state.songPlaying){
+        audio.play();
+        this.setState({
+                songPlaying: true,
+                currentAlbumId: album_id,
+                currentArtistId: artist_id,
+                currentTrackId: track_id,
+                audio,
+            })
+        }else{
+            if(this.state.currentTrackId == track_id){
+                this.state.audio.pause();
+                this.setState(
+                    {
+                        songPlaying: false,
+                    }
+                )
             }else{
-                if(this.state.currentTrackId == track_id){
-                    this.state.audio.pause();
-                    this.setState(
-                        {
-                            songPlaying: false,
-                        }
-                    )
-                }else{
-                    this.state.audio.pause()
-                    audio.play()
-                    this.setState({
-                        songPlaying:true,
-                        currentTrack: res.data,
-                        currentAlbumId: curAlbumId,
-                        currentArtistId: curArtistId,
-                        currentTrackId: track_id,
-                        audio,})
-                }
-            }}
-        )
+                this.state.audio.pause()
+                audio.play()
+                this.setState({
+                    songPlaying:true,
+                    currentAlbumId: album_id,
+                    currentArtistId: artist_id,
+                    currentTrackId: track_id,
+                    audio,})
+            }
+        }
+        
 
         
         this.checkTrackInLib(track_id)
@@ -198,7 +185,7 @@ export class Home extends Component {
                         isFetching={this.state.isFetching} 
                         setIsFetching={this.setIsFetching}
                         currentTab={this.state.currentTab} 
-                        fetchAudioAndDetails={this.fetchAudioAndDetails}/>
+                        handleTrackClick={this.handleTrackClick}/>
                         <SongContainer 
                         currentTrackId={this.state.currentTrackId} 
                         addTrackToLib={this.addTrackToLib} 
@@ -208,13 +195,13 @@ export class Home extends Component {
                     </div>
                     <ArtistContainer 
                     currentArtistId={this.state.currentArtistId}
-                    fetchAudioAndDetails={this.fetchAudioAndDetails}
+                    handleTrackClick={this.handleTrackClick}
                     playAlbum={this.playAlbum}
                     setGenre={this.setGenre}
                     />
                     <AlbumContainer 
                     currentAlbumId={this.state.currentAlbumId}
-                    fetchAudioAndDetails={this.fetchAudioAndDetails}
+                    handleTrackClick={this.handleTrackClick}
                     />
                 </div>
             )
