@@ -15,10 +15,10 @@ Notable Features:
 
 Upcoming Features:
 - [ ] Search function
-- [ ] Tags for genres
+- [ ] Tags for genres on tagbar
 - [ ] Song recommendations
 
 To Fix:
 - [X] Add alert to enhance user experience
-- [ ] Fix lag between user interaction and music played
+- [X] Fix lag between user interaction and music played
 
