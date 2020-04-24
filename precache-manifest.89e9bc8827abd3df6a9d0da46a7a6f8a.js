@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d8fc4c56629032f47da7bfa80ec307e",
+    "revision": "06bcfc7c817f0d74c93ed3f7cc11fe25",
     "url": "/mellowdy/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mellowdy/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "4d146fc1113aa52675d6",
-    "url": "/mellowdy/static/css/main.84d2ede7.chunk.css"
+    "revision": "a10bdd9050513168311d",
+    "url": "/mellowdy/static/css/main.783661a7.chunk.css"
   },
   {
     "revision": "3ed4551517467c6adb9f",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mellowdy/static/js/2.178b5e45.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4d146fc1113aa52675d6",
-    "url": "/mellowdy/static/js/main.e1810071.chunk.js"
+    "revision": "a10bdd9050513168311d",
+    "url": "/mellowdy/static/js/main.94af3a9d.chunk.js"
   },
   {
     "revision": "8accdf0482cb9d993422",
